@@ -1,20 +1,16 @@
 # project-pc
 element-ui基础模板-自用
-
+```
 │  .env  // 环境变量-开发
 │  .env.production // 环境变量-生产
 │  .eslintrc-auto-import.json // 自动导入配置
 │  .eslintrc.cjs // eslint配置
-│  .gitignore
-│  index.html
 │  package-lock.json // 依赖
 │  package.json // 依赖
-│  README.md
 │  tailwind.config.js // tailwind配置
 │  vite.config.js // vite配置
 │  
 ├─build-cjs // vite打包后的cjs
-│      .addMetaTag.cjs
 │      
 └─src
     │  App.vue // 入口vue--设置全局样式、刷新页面时重新加载数据
@@ -88,6 +84,7 @@ element-ui基础模板-自用
             message.js // 消息提示
             useSubmit.js // vue-router提交表单时使用
             useTableData.js // vue-router表格数据时使用
+```
 
 # 版本要求
 node版本20+

@@ -1,12 +1,8 @@
 <script setup>
 import zhCn from "element-plus/dist/locale/zh-cn.mjs";
 import en from "element-plus/dist/locale/en.mjs";
-import { useUserStore } from "@/stores/useUserStore";
 import { useLocaleStore } from "@/stores/useLocaleStore";
-import { getTokenId } from "@/utils/cookieUser";
 
-const userStore = useUserStore();
-const storeInfo = computed(() => userStore.getUserInfo);
 const localeStore = useLocaleStore();
 
 // 右键菜单刷新当前页面用
@@ -23,51 +19,20 @@ const locale = computed(() => {
   return keys[$i18n.global.locale];
 });
 
-function useRefresh() {
-  const { runAsync, loading } = useRequest(userStore.requestInfo, {
-    loadingDelay: 500,
-    loadingKeep: 1000,
-    manual: true,
-    errorRetryCount: 3,
-    onError() {
-      userStore.clearUserInfo();
-    },
-  });
-
-  return {
-    runAsync,
-    loading,
-  };
-}
-const { runAsync, loading } = useRefresh();
-
 const router = useRouter();
 
 const dialogVisible = ref(false);
 function onAuto() {
   dialogVisible.value = false;
   router.push({ name: "" });
-};
+}
 </script>
 
 <template>
   <el-config-provider :locale="locale" :zIndex="3000" :message="{ max: 5 }">
     <router-view />
   </el-config-provider>
-  <div
-    v-show="loading"
-    class="fixed top-0 left-0 z-[1100000] w-screen h-screen bg-white flex flex-col justify-center items-center"
-  >
-    <div class="spinner">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-    <div class="mt-10">loading...</div>
-  </div>
+
   <el-dialog
     v-model="dialogVisible"
     class="dialog-auto card-box"

@@ -82,8 +82,8 @@ element-ui基础模板-自用
             copy.js // 复制
             dateFormate.js // 日期格式化
             message.js // 消息提示
-            useSubmit.js // vue-router提交表单时使用
-            useTableData.js // vue-router表格数据时使用
+            useSubmit.js // vue-request提交表单时使用
+            useTableData.js // vue-request表格数据时使用
 ```
 
 # 版本要求
